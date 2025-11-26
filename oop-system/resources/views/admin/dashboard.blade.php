@@ -10,15 +10,7 @@
     <!-- Start::page-header -->
     <div class="d-flex align-items-center justify-content-between page-header-breadcrumb flex-wrap gap-2">
         <div>
-            <ol class="breadcrumb mb-1">
-                <li class="breadcrumb-item">
-                    <a href="javascript:void(0);">
-                        Dashboards
-                    </a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Sales</li>
-            </ol>
-            <h1 class="page-title fw-medium fs-18 mb-0">Sales Dashboard</h1>
+            <h1 class="page-title fw-medium fs-25 mb-0 pl-10">Dashboard</h1>
         </div>
         <div class="d-flex align-items-center gap-2 flex-wrap">
             <div class="form-group">
@@ -48,7 +40,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between mb-2">
                                 <div>
-                                    <span class="text-muted d-block mb-1">Total Products</span>
+                                    <span class="text-muted d-block mb-1">Total Books</span>
                                     <h4 class="fw-medium mb-0">854</h4>
                                 </div>
                                 <div class="lh-1">
@@ -66,7 +58,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between mb-2">
                                 <div>
-                                    <span class="d-block text-muted mb-1">Total Users</span>
+                                    <span class="d-block text-muted mb-1">Total Students</span>
                                     <h4 class="fw-medium mb-0">31,876</h4>
                                 </div>
                                 <div class="lh-1">
