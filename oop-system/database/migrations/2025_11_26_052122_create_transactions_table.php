@@ -17,7 +17,7 @@ return new class extends Migration
 
             // student_id column and foreign key
             $table->string('student_id');
-            $table->foregin('student_id')->references('student_id')->on('students')->onDelete('cascade');
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
 
             // book_id column and foreign key
             $table->unsignedBigInteger('book_id'); // matches books.id type
