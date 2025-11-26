@@ -58,7 +58,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between mb-2">
                                 <div>
-                                    <span class="d-block text-muted mb-1">Total Students</span>
+                                    <span class="d-block text-muted mb-1">Total Registered Users</span>
                                     <h4 class="fw-medium mb-0">31,876</h4>
                                 </div>
                                 <div class="lh-1">
@@ -76,7 +76,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between mb-2">
                                 <div>
-                                    <span class="text-muted d-block mb-1">Total Revenue</span>
+                                    <span class="text-muted d-block mb-1">Total Outstanding Fines</span>
                                     <h4 class="fw-medium mb-0">$3,64,241</h4>
                                 </div>
                                 <div class="lh-1">
@@ -94,7 +94,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between mb-2">
                                 <div>
-                                    <span class="text-muted d-block mb-1">Total Sales</span>
+                                    <span class="text-muted d-block mb-1">Total Transactions</span>
                                     <h4 class="fw-medium mb-0">1,76,586</h4>
                                 </div>
                                 <div class="lh-1">
@@ -111,7 +111,7 @@
                     <div class="card custom-card">
                         <div class="card-header justify-content-between">
                             <div class="card-title">
-                                Sales Overview
+                                Transaction Flow
                             </div>
                             <div class="dropdown"> 
                                 <a href="javascript:void(0);" class="btn btn-sm btn-light text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true"> Sort By</a> 
@@ -131,7 +131,7 @@
                     <div class="card custom-card overflow-hidden">
                         <div class="card-header pb-0 justify-content-between">
                             <div class="card-title">
-                                Order Statistics
+                                Book Status
                             </div>
                             <div class="dropdown">
                                 <a aria-label="anchor" href="javascript:void(0);" class="btn btn-light btn-icons btn-sm text-muted" data-bs-toggle="dropdown" aria-expanded="false">
@@ -192,7 +192,7 @@
                     <div class="card custom-card overflow-hidden">
                         <div class="card-header justify-content-between">
                             <div class="card-title">
-                                Top Selling Categories
+                                Top Borrowed Categories
                             </div>
                             <div class="dropdown"> 
                                 <a href="javascript:void(0);" class="btn btn-sm btn-light text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true"> Sort By</a> 
