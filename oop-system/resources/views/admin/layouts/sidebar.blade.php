@@ -1,14 +1,15 @@
 <aside class="app-sidebar sticky" id="sidebar">
+    
 
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
                 <a href="index.html" class="header-logo">
-                    <img src="../assets/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
-                    <img src="../assets/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark">
-                    <img src="../assets/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
-                    <img src="../assets/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo">
-                    <img src="../assets/images/brand-logos/toggle-white.png" alt="logo" class="toggle-white">
-                    <img src="../assets/images/brand-logos/desktop-white.png" alt="logo" class="desktop-white">
+                    <img src=" {{ asset('backend/assets/images/brand-logos/toggle-dark.png') }} " alt="logo" class="toggle-dark">
+                    <img src=" {{ asset('backend/assets/images/brand-logos/desktop-logo.png') }} " alt="logo" class="desktop-logo">
+                    <img src=" {{ asset('backend/assets/images/brand-logos/desktop-dark.png') }} " alt="logo" class="desktop-dark">
+                    <img src=" {{ asset('backend/assets/images/brand-logos/toggle-logo.png') }} " alt="logo" class="toggle-logo">
+                    <img src=" {{ asset('backend/assets/images/brand-logos/toggle-white.png') }} " alt="logo" class="toggle-white">
+                    <img src=" {{ asset('backend/assets/images/brand-logos/desktop-white.png') }} " alt="logo" class="desktop-white">
                 </a>
             </div>
             <!-- End::main-sidebar-header -->
@@ -48,10 +49,65 @@
                         <!-- Start::slide -->
                         <li class="slide">
                             <a href="icons.html" class="side-menu__item">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 side-menu__icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
-                                  </svg>
-                                <span class="side-menu__label">Icons</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-library-icon lucide-library ml-2 side-menu__icon">
+                                    <path d="m16 6 4 14"/>
+                                    <path d="M12 6v14"/>
+                                    <path d="M8 8v12"/>
+                                    <path d="M4 4v16"/>
+                                </svg>
+                                <span class="side-menu__label">Assets</span>
+                            </a>
+                        </li>
+                        <!-- End::slide -->
+
+                        <!-- Start::slide -->
+                        <li class="slide">
+                            <a href="icons.html" class="side-menu__item">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user mr-2 side-menu__icon">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/></svg>
+                                <span class="side-menu__label">User</span>
+                            </a>
+                        </li>
+                        <!-- End::slide -->
+
+                        <!-- Start::slide -->
+                        <li class="slide">
+                            <a href="icons.html" class="side-menu__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gpu-icon lucide-gpu mlr-2 side-menu__icon">
+                                    <path d="M2 21V3"/>
+                                    <path d="M2 5h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2.26"/>
+                                    <path d="M7 17v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3"/>
+                                    <circle cx="16" cy="11" r="2"/>
+                                    <circle cx="8" cy="11" r="2"/>
+                                </svg>
+                                <span class="side-menu__label">Transaction</span>
+                            </a>
+                        </li>
+                        <!-- End::slide -->
+
+                        <!-- Start::slide -->
+                        <li class="slide">
+                            <a href="icons.html" class="side-menu__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-japanese-yen-icon lucide-japanese-yen ml-2 side-menu__icon">
+                                    <path d="M12 9.5V21m0-11.5L6 3m6 6.5L18 3"/>
+                                    <path d="M6 15h12"/>
+                                    <path d="M6 11h12"/>
+                                </svg>
+                                <span class="side-menu__label">Fine</span>
+                            </a>
+                        </li>
+                        <!-- End::slide -->
+
+                        <!-- Start::slide -->
+                        <li class="slide">
+                            <a href="icons.html" class="side-menu__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history-icon lucide-history ml-2 side-menu__icon">
+                                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                    <path d="M3 3v5h5"/>
+                                    <path d="M12 7v5l4 2"/>
+                                </svg>
+                                <span class="side-menu__label">Reporting & History</span>
                             </a>
                         </li>
                         <!-- End::slide -->
