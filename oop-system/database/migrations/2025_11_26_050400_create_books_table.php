@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('isbn')->unique();
             $table->string('author');
-            $table->integer('category');
+
+            // category column as foreign key
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            
             $table->boolean('isActive')->default(true);
             $table->datetime('date_added');
             $table->timestamps();
