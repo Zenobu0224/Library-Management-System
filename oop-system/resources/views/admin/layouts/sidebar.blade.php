@@ -22,7 +22,7 @@
                     <div class="slide-left" id="slide-left">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24"> <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path> </svg>
                     </div>
-                    <ul class="main-menu">x
+                    <ul class="main-menu">
                         <!-- Start::slide__category -->
                         <li class="slide__category"><span class="category-name">Main</span></li>
                         <!-- End::slide__category -->
@@ -39,7 +39,7 @@
                                     <a href="javascript:void(0)">Dashboards</a>
                                 </li>
                                 <li class="slide">
-                                    <a href="index.html" class="side-menu__item">Sales</a>
+                                    <a href="index.html" class="side-menu__item">Overview</a>
                                 </li>
                             </ul>
                         </li>
@@ -48,14 +48,14 @@
 
                         <!-- Start::slide -->
                         <li class="slide">
-                            <a href="icons.html" class="side-menu__item">
+                            <a href="{{ route('books.index') }}" class="side-menu__item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-library-icon lucide-library ml-2 side-menu__icon">
                                     <path d="m16 6 4 14"/>
                                     <path d="M12 6v14"/>
                                     <path d="M8 8v12"/>
                                     <path d="M4 4v16"/>
                                 </svg>
-                                <span class="side-menu__label">Assets</span>
+                                <span class="side-menu__label">Assets Management</span>
                             </a>
                         </li>
                         <!-- End::slide -->
@@ -66,7 +66,7 @@
                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user mr-2 side-menu__icon">
                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
                                     <circle cx="12" cy="7" r="4"/></svg>
-                                <span class="side-menu__label">User</span>
+                                <span class="side-menu__label">User Management</span>
                             </a>
                         </li>
                         <!-- End::slide -->
@@ -81,7 +81,7 @@
                                     <circle cx="16" cy="11" r="2"/>
                                     <circle cx="8" cy="11" r="2"/>
                                 </svg>
-                                <span class="side-menu__label">Transaction</span>
+                                <span class="side-menu__label">Transact Management</span>
                             </a>
                         </li>
                         <!-- End::slide -->
@@ -94,7 +94,7 @@
                                     <path d="M6 15h12"/>
                                     <path d="M6 11h12"/>
                                 </svg>
-                                <span class="side-menu__label">Fine</span>
+                                <span class="side-menu__label">Fine Management</span>
                             </a>
                         </li>
                         <!-- End::slide -->
