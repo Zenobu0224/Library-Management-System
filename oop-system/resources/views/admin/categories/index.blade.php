@@ -47,8 +47,7 @@
                             <td>{{ $category->date_added }}</td>
                             <td>
                                 <div class="hstack gap-2 flex-wrap">
-                                    <a href="javascript:void(0);" class="text-info fs-14 lh-1"><i
-                                            class="ri-edit-line"></i></a>
+                                    <a href="{{ route('categories.edit', $category->id)}}" class="btn btn-icon btn-sm btn-success"><i class="ri-edit-line"></i></a>
                                     <a href="javascript:void(0);" class="text-danger fs-14 lh-1"><i
                                             class="ri-delete-bin-5-line"></i></a>
                                 </div>
