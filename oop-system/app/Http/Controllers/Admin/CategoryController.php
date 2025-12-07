@@ -22,7 +22,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
+        $categories = Category::all();
+
+        return view('admin.categories.create', compact('categories'));
     }
 
     /**
@@ -30,7 +33,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'isActive' => 'required',
+            'date_added' => 'required'
+        ]);
+
+        $validated['isActive'] = (int) $validated['isActive'];
+
+        // Save to DB
+        Category::create($validated);
+
+        return redirect()->route('categories.index')
+            ->with('Success', 'Category added successfully!');
     }
 
     /**

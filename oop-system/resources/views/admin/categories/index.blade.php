@@ -19,7 +19,7 @@
             Categories
         </div>
         <div class="prism-toggle">
-            <button class="btn btn-sm btn-primary-light">Add Category</button>
+            <a class="btn btn-sm btn-primary-light" href="{{ route('categories.create') }}">Add Category</a>
         </div>
     </div>
     <div class="card-body">
