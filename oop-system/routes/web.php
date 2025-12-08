@@ -22,21 +22,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // All admin resource routes
+    Route::resource('books', BookController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('students', StudentController::class);
+    Route::resource('transactions', TransactionController::class);
+    Route::resource('users', UserController::class);
 });
-
-// Route for BookController
-Route::resource('books', BookController::class);
-
-// Route for CategoryController
-Route::resource('categories', CategoryController::class);
-
-// Route for StudentsController
-Route::resource('students', StudentController::class);
-
-// Route for TransactionController
-Route::resource('transactions', TransactionController::class);
-
-// Route for UserController
-Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 require __DIR__.'/auth.php';

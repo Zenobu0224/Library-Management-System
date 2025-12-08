@@ -5,8 +5,23 @@ Users | Library Management
 @endsection
 
 @section('contents')
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+@endif
+
+<!-- Start:: row-10 -->
 <div class="row">
-    <div class="col-xl-12 mt-4">
+    <div class="col-xl-11 mt-5 mx-auto">
         <div class="card custom-card">
             <div class="card-header justify-content-between">
                 <div class="card-title">
@@ -16,42 +31,60 @@ Users | Library Management
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                     </svg>
-                    Registered Users
+                    Users
                 </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table text-nowrap table-hover">
+                    <table class="table text-nowrap">
                         <thead>
                             <tr>
-                                <th>Student ID</th>
-                                <th>Full Name</th>
-                                <th>Email</th>
-                                <th>Course</th>
-                                <th>Year Level</th>
-                                <th>Registered Date</th>
+                                <th scope="col">Student ID</th>
+                                <th scope="col">Lastname</th>
+                                <th scope="col">Firstname</th>
+                                <th scope="col">Middlename</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Year Level</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($users as $user)
+                           @foreach($users as $user)
                                 <tr>
                                     <td>{{ $user->student_id }}</td>
-                                    <td>{{ $user->lastname }}, {{ $user->firstname }} {{ $user->middlename }}</td>
+                                    <td>{{ $user->lastname }}</td>
+                                    <td>{{ $user->firstname }}</td>
+                                    <td>{{ $user->middlename ?? 'N/A' }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->course }}</td>
                                     <td>{{ $user->year_level }}</td>
-                                    <td>{{ $user->created_at->format('M d, Y') }}</td>
+                                    <td>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">
+                                            Edit
+                                        </a>
+                                        
+                                        @if($user->id !== auth()->id())
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" 
+                                                        onclick="return confirm('Are you sure you want to delete this user?')">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </td>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6" class="text-center">No users registered yet.</td>
-                                </tr>
-                            @endforelse
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
+            <div class="card-footer d-none border-top-0">
+            </div>
         </div>
     </div>
 </div>
+<!-- End:: row-10 -->
 @endsection
