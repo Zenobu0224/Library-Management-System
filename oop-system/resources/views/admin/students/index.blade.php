@@ -58,7 +58,6 @@
                                                                 <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
                                                             </button>
                                                         </form>
-
                                                     </td>
                                                 </tr>
                                             @endforeach

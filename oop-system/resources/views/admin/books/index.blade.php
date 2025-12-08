@@ -52,10 +52,16 @@
                                 <a class="btn btn-sm btn-success btn-wave" href="{{ route('books.edit', $book->id) }}">
                                     <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
                                 </a>
-                                <button class="btn btn-sm btn-danger btn-wave">
-                                    <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
-                                </button>
+
+                                <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger btn-wave">
+                                        <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
+                                    </button>
+                                </form>
                             </td>
+
                         </tr>
                     @endforeach
                 </tbody>
