@@ -48,8 +48,13 @@
                             <td>
                                 <div class="hstack gap-2 flex-wrap">
                                     <a href="{{ route('categories.edit', $category->id)}}" class="btn btn-icon btn-sm btn-success"><i class="ri-edit-line"></i></a>
-                                    <a href="javascript:void(0);" class="text-danger fs-14 lh-1"><i
-                                            class="ri-delete-bin-5-line"></i></a>
+
+
+                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-icon btn-sm btn-danger"><i class="ri-delete-bin-line"></i></button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

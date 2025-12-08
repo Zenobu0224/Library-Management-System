@@ -45,6 +45,10 @@
                         </li>
                         <!-- End::slide -->
 
+                        <!-- Start::slide__category -->
+                        <li class="slide__category"><span class="category-name">Library Management</span></li>
+                        <!-- End::slide__category -->
+
                         <!-- Start::slide -->
                         <li class="slide">
                             <a href="{{ route('categories.index') }}" class="side-menu__item">
@@ -100,29 +104,22 @@
                             </a>
                         </li>
                         <!-- End::slide -->
+                        
+
+                        <!-- Start::slide__category -->
+                        <li class="slide__category"><span class="category-name">Administration</span></li>
+                        <!-- End::slide__category -->
 
                         <!-- Start::slide -->
                         <li class="slide">
                             <a href="icons.html" class="side-menu__item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-japanese-yen-icon lucide-japanese-yen ml-2 side-menu__icon">
-                                    <path d="M12 9.5V21m0-11.5L6 3m6 6.5L18 3"/>
-                                    <path d="M6 15h12"/>
-                                    <path d="M6 11h12"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-icon lucide-users ml-2 side-menu__icon">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                    <path d="M16 3.128a4 4 0 0 1 0 7.744"/>
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <circle cx="9" cy="7" r="4"/>
                                 </svg>
-                                <span class="side-menu__label">Fine Management</span>
-                            </a>
-                        </li>
-                        <!-- End::slide -->
-
-                        <!-- Start::slide -->
-                        <li class="slide">
-                            <a href="icons.html" class="side-menu__item">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-history-icon lucide-history ml-2 side-menu__icon">
-                                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                                    <path d="M3 3v5h5"/>
-                                    <path d="M12 7v5l4 2"/>
-                                </svg>
-                                <span class="side-menu__label">Reporting & History</span>
+                                <span class="side-menu__label">Users</span>
                             </a>
                         </li>
                         <!-- End::slide -->
