@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\UserController;
 use App\Models\Transaction;
 
 Route::get('/', function () {
@@ -34,5 +35,8 @@ Route::resource('students', StudentController::class);
 
 // Route for TransactionController
 Route::resource('transactions', TransactionController::class);
+
+// Route for UserController
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 require __DIR__.'/auth.php';
