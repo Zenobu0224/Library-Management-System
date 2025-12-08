@@ -100,11 +100,11 @@ class UserController extends Controller
                 ->with('error', 'You cannot delete your own account!');
         }
         
-        // Optional: Check if user has any active transactions
-        // if ($user->transactions()->where('status', 'borrowed')->exists()) {
-        //     return redirect()->route('users.index')
-        //         ->with('error', 'Cannot delete user with active transactions!');
-        // }
+        // Check if user has any active transactions
+        if ($user->transactions()->where('status', 'borrowed')->exists()) {
+            return redirect()->route('users.index')
+                ->with('error', 'Cannot delete user with active transactions!');
+        }
         
         $user->delete();
         
