@@ -64,7 +64,10 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $categories = Category::all(); // fetch all categories
+
+        return view('admin.books.edit', compact('book', 'categories'));
     }
 
     /**
@@ -72,7 +75,21 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'isbn' => 'required',
+            'author' => 'required',
+            'category_id' => 'required',
+            'isActive' => 'required',
+            'date_added' => 'required'
+        ]);
+
+        $validated['isActive'] = (int) $validated['isActive'];
+
+        Book::create($validated);
+
+        return redirect()->route('books.index')
+            ->with('Success', 'Book added successfully');
     }
 
     /**

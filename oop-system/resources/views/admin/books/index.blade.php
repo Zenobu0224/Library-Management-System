@@ -33,6 +33,7 @@
                         <th scope="col">Author</th>
                         <th scope="col">Status</th>
                         <th scope="col">Date Added</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,8 +46,16 @@
                             </th>
                             <td><span class="badge bg-success-transparent">{{ $book->isbn }}</span></td>
                             <td>{{ $book->author }}</td>
-                            <td>{{ $book->isActive }}</td>
+                            <td>{{ $book->isActive ? 'Active' : 'Inactive' }}</td>
                             <td>{{ $book->date_added }}</td>
+                            <td>
+                                <a class="btn btn-sm btn-success btn-wave" href="{{ route('books.edit', $book->id) }}">
+                                    <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
+                                </a>
+                                <button class="btn btn-sm btn-danger btn-wave">
+                                    <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
+                                </button>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
