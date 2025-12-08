@@ -1,13 +1,13 @@
-@extends('admin.layouts.master');
+@extends('admin.layouts.master')
 
 @section('title')
-Add Book | Library Management
+Add Transaction | Library Management
 @endsection
 
 @section('contents')
 <!-- Start:: row-1 -->
 <div class="row">
-    <div class="col-xl-10 mx-auto">
+    <div class="col-xl-10 mx-auto mt-4">
     <div class="card custom-card">
         <div class="card-header justify-content-between">
             <div class="card-title">
@@ -17,51 +17,54 @@ Add Book | Library Management
                     <path d="M8 8v12"/>
                     <path d="M4 4v16"/>
                 </svg>
-                Book Description
+                Transactions Description
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('books.store') }}">
+            <form method="POST" action="{{ route('transactions.store') }}">
                 @csrf
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="name">
-                    <label for="floatingInput">Title</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="isbn">
-                    <label for="floatingPassword">ISBN</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="author">
-                    <label for="floatingPassword">Author</label>
+                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="txn_no">
+                    <label for="floatingInput">Transaction #</label>
                 </div>
 
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
-                    <select class="form-control py-3" name="category_id" aria-placeholder="Category">
-                        <option value="">Select Category</option>
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <select class="form-control py-3" name="student_id" aria-placeholder="Category">
+                        <option value="">Select Student</option>
+                        @foreach($students as $student)
+                            <option value="{{ $student->student_id }}">
+                                {{ $student->student_id }} - {{ $student->last_name }}, {{ $student->first_name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
 
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
-                    <select class="form-control py-3" name="isActive">
-                        <option value="">Select Status</option>
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
+                    <select class="form-control py-3" name="book_id" aria-placeholder="Category">
+                        <option value="">Select Book</option>
+                        @foreach($books as $book)
+                            <option value="{{ $book->id }}">{{ $book->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
-                    <label for="input-date" class="form-label">Date Added</label>
-                    <input type="date" class="form-control py-3" name="date_added">
+                    <label for="input-date" class="form-label">Date Borrowed</label>
+                    <input type="date" class="form-control py-3" name="date_borrowed">
                 </div>  
 
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                    <label for="input-date" class="form-label">Due Date</label>
+                    <input type="date" class="form-control py-3" name="due_date">
+                </div>  
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="by">
+                    <label for="floatingPassword">Processed By</label>
+                </div>
+
                 <div class="col-12 mt-5 text-center">
-                    <button type="submit" class="btn btn-primary btn-sm px-4 py-2">Add Book</button>
+                    <button type="submit" class="btn btn-primary btn-sm px-4 py-2">Add Transaction</button>
                 </div>
             </form>
 

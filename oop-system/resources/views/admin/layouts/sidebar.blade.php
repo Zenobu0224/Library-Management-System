@@ -93,7 +93,7 @@
 
                         <!-- Start::slide -->
                         <li class="slide">
-                            <a href="icons.html" class="side-menu__item">
+                            <a href="{{route('transactions.index')}}" class="side-menu__item">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gpu-icon lucide-gpu mlr-2 side-menu__icon">
                                     <path d="M2 21V3"/>
                                     <path d="M2 5h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2.26"/>
@@ -101,7 +101,7 @@
                                     <circle cx="16" cy="11" r="2"/>
                                     <circle cx="8" cy="11" r="2"/>
                                 </svg>
-                                <span class="side-menu__label">Transact Management</span>
+                                <span class="side-menu__label">Transaction</span>
                             </a>
                         </li>
                         <!-- End::slide -->

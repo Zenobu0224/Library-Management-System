@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\TransactionController;
+use App\Models\Transaction;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,5 +31,8 @@ Route::resource('categories', CategoryController::class);
 
 // Route for StudentsController
 Route::resource('students', StudentController::class);
+
+// Route for TransactionController
+Route::resource('transactions', TransactionController::class);
 
 require __DIR__.'/auth.php';
