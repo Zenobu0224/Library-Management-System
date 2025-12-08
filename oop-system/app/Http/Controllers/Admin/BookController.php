@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Models\Category;
 
 class BookController extends Controller
 {
@@ -23,7 +24,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view('admin.books.create', compact('categories'));
     }
 
     /**
@@ -31,7 +34,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'isbn' => 'required',
+            'author' => 'required',
+            'category_id' => 'required',
+            'isActive' => 'required',
+            'date_added' => 'required'
+        ]);
+
+        $validated['isActive'] = (int) $validated['isActive'];
+
+        Book::create($validated);
+
+        return redirect()->route('books.index')
+            ->with('Success', 'Book added successfully');
     }
 
     /**

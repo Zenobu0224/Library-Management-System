@@ -20,7 +20,7 @@
             </div>
             
             <div class="prism-toggle">
-                <button class="btn btn-sm btn-primary-light">Add Book</button>
+                <a class="btn btn-sm btn-primary-light" href="{{ route('books.create') }}">Add Book</a>
             </div>
     </div>
     <div class="card-body">
