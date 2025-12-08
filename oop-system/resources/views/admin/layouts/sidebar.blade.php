@@ -81,10 +81,11 @@
 
                         <!-- Start::slide -->
                         <li class="slide">
-                            <a href="icons.html" class="side-menu__item">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user mr-2 side-menu__icon">
+                            <a href="{{ route('students.index') }}" class="side-menu__item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user ml-2 side-menu__icon">
                                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                                    <circle cx="12" cy="7" r="4"/></svg>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
                                 <span class="side-menu__label">Students</span>
                             </a>
                         </li>

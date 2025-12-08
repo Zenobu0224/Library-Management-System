@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -11,7 +13,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+
+        return view('admin.students.index', compact('students'));
     }
 
     /**
@@ -19,7 +23,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $student = Student::all();
+
+        return view('admin.students.create', compact('student'));
     }
 
     /**
@@ -27,7 +33,20 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'student_id' => 'required',
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_name' => 'nullable',
+            'email' => 'required',
+            'course' => 'required',
+            'year_level' => 'required'
+        ]);
+
+        Student::create($validated);
+
+        return redirect()->route('students.index')
+            ->with('Success', 'Student added successfully');
     }
 
     /**

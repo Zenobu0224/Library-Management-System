@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\StudentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,10 +21,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route for Books
+// Route for BookController
 Route::resource('books', BookController::class);
 
-// Route for Category
+// Route for CategoryController
 Route::resource('categories', CategoryController::class);
+
+// Route for StudentsController
+Route::resource('students', StudentController::class);
 
 require __DIR__.'/auth.php';
