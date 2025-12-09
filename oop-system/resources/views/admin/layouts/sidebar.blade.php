@@ -3,15 +3,17 @@
 
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
-                <a href="index.html" class="header-logo">
-                    <img src=" {{ asset('backend/assets/images/brand-logos/toggle-dark.png') }} " alt="logo" class="toggle-dark">
-                    <img src=" {{ asset('backend/assets/images/brand-logos/desktop-logo.png') }} " alt="logo" class="desktop-logo">
-                    <img src=" {{ asset('backend/assets/images/brand-logos/desktop-dark.png') }} " alt="logo" class="desktop-dark">
-                    <img src=" {{ asset('backend/assets/images/brand-logos/toggle-logo.png') }} " alt="logo" class="toggle-logo">
-                    <img src=" {{ asset('backend/assets/images/brand-logos/toggle-white.png') }} " alt="logo" class="toggle-white">
-                    <img src=" {{ asset('backend/assets/images/brand-logos/desktop-white.png') }} " alt="logo" class="desktop-white">
+                <a href="{{ route('dashboard') }}" class="header-logo flex items-center gap-2">
+                    <img src="{{ asset('backend/assets/images/lib-manage.png') }}"
+                        alt="logo"
+                        class="h-8 w-auto object-contain align-middle inline-block">
+
+                    <span class="font-bold text-white">Library Management</span>
                 </a>
             </div>
+
+
+
             <!-- End::main-sidebar-header -->
 
             <!-- Start::main-sidebar -->
