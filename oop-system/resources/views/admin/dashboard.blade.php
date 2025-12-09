@@ -182,7 +182,7 @@
                             <polyline points="12 6 12 12 16 14"/>
                         </svg>
                     </div>
-                    <h2 class="fw-bold mb-1 text-danger">23</h2>
+                    <h2 class="fw-bold mb-1 text-danger">{{ number_format($overdueTransactions) }}</h2>
                     <p class="text-muted mb-0">Need Immediate Attention</p>
                 </div>
             </div>

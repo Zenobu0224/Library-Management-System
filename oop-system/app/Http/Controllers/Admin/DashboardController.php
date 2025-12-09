@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Student;
 use App\Models\User; 
 use App\Models\Transaction;  
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -17,109 +18,55 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        // BOOKS
+        // Existing counts
         $totalBooks = Book::count();
-
-        // Calculate books added this month
-        $booksThisMonth = Book::whereMonth('created_at', now()->month)
-                              ->whereYear('created_at', now()->year)
-                              ->count();
-        
-        // Calculate books added last month
-        $booksLastMonth = Book::whereMonth('created_at', now()->subMonth()->month)
-                              ->whereYear('created_at', now()->subMonth()->year)
-                              ->count();
-
-
-        // Calculate percentage increase
-        $bookPercentageIncrease = 0;
-        if ($booksLastMonth > 0) {
-            $bookPercentageIncrease = round((($booksThisMonth - $booksLastMonth) / $booksLastMonth) * 100, 1);
-        } elseif ($booksThisMonth > 0) {
-            $bookPercentageIncrease = 100;
-        }
-
-        // CATEGORIES
         $totalCategories = Category::count();
-
-        // Calculate categories added this month
-        $categoriesThisMonth = Category::whereMonth('created_at', now()->month)
-                              ->whereYear('created_at', now()->year)
-                              ->count();
-        
-        // Calculate categories added last month
-        $categoriesLastMonth = Category::whereMonth('created_at', now()->subMonth()->month)
-                              ->whereYear('created_at', now()->subMonth()->year)
-                              ->count();
-
-
-        // Calculate percentage increase
-        $categoryPercentageIncrease = 0;
-        if ($categoriesLastMonth > 0) {  
-            $categoryPercentageIncrease = round((($categoriesThisMonth - $categoriesLastMonth) / $categoriesLastMonth) * 100, 1);
-        } elseif ($categoriesThisMonth > 0) {
-            $categoryPercentageIncrease = 100;
-        }
-
-        // STUDENTS
         $totalStudents = Student::count();
-
-        // Calculate categories added this month
-        $studentsThisMonth = Student::whereMonth('created_at', now()->month)
-                              ->whereYear('created_at', now()->year)
-                              ->count();
-        
-        // Calculate categories added last month
-        $studentsLastMonth = Student::whereMonth('created_at', now()->subMonth()->month)
-                              ->whereYear('created_at', now()->subMonth()->year)
-                              ->count();
-
-
-        // Calculate percentage increase
-        $studentPercentageIncrease = 0;
-        if ($studentsLastMonth > 0) {  
-            $studentPercentageIncrease = round((($studentsThisMonth - $studentsLastMonth) / $studentsLastMonth) * 100, 1);
-        } elseif ($studentsThisMonth > 0) {
-            $studentPercentageIncrease = 100;
-        }
-
-        // USERS
         $totalUsers = User::count();
+        $totalTransactions = Transaction::active()->count();
 
-        // Calculate users added this month
-        $usersThisMonth = User::whereMonth('created_at', now()->month)
-                              ->whereYear('created_at', now()->year)
+        // Overdue transactions count
+        $overdueTransactions = Transaction::overdue()->count();
+
+        // Available books (total books - currently borrowed)
+        $availableBooks = $totalBooks - $totalTransactions;
+
+        // Calculate percentage increases (your existing logic)
+        $bookPercentageIncrease = $this->calculatePercentageIncrease(Book::class);
+        $categoryPercentageIncrease = $this->calculatePercentageIncrease(Category::class);
+        $studentPercentageIncrease = $this->calculatePercentageIncrease(Student::class);
+        $usersPercentageIncrease = $this->calculatePercentageIncrease(User::class);
+
+        return view('admin.dashboard', compact(
+            'totalBooks',
+            'totalCategories',
+            'totalStudents',
+            'totalUsers',
+            'totalTransactions',
+            'overdueTransactions',
+            'availableBooks',
+            'bookPercentageIncrease',
+            'categoryPercentageIncrease',
+            'studentPercentageIncrease',
+            'usersPercentageIncrease'
+        ));
+    }
+
+    private function calculatePercentageIncrease($model)
+    {
+        $currentMonth = $model::whereMonth('created_at', Carbon::now()->month)
+                              ->whereYear('created_at', Carbon::now()->year)
                               ->count();
         
-        // Calculate users added last month
-        $usersLastMonth = User::whereMonth('created_at', now()->subMonth()->month)
-                              ->whereYear('created_at', now()->subMonth()->year)
-                              ->count();
-
-
-        // Calculate percentage increase
-        $usersPercentageIncrease = 0;
-        if ($usersLastMonth > 0) {  
-            $categoryPercentageIncrease = round((($usersThisMonth - $usersLastMonth) / $usersLastMonth) * 100, 1);
-        } elseif ($usersThisMonth > 0) {
-            $usersPercentageIncrease = 100;
-        }
-
-
-        // TRANSACTIONS
-        $totalTransactions = Transaction::count();
-
-        // OVERDUE BOOKS
-        $overdueBooks = Transaction::where('status', 'borrowed')
-                           ->where('due_date', '<', now())
+        $lastMonth = $model::whereMonth('created_at', Carbon::now()->subMonth()->month)
+                           ->whereYear('created_at', Carbon::now()->subMonth()->year)
                            ->count();
 
-        return view('admin.dashboard',  compact('totalBooks', 'bookPercentageIncrease',
-                                                'totalCategories', 'categoryPercentageIncrease',
-                                                'totalStudents', 'studentPercentageIncrease',
-                                                'totalUsers', 'usersPercentageIncrease',
-                                                'totalTransactions'));
+        if ($lastMonth == 0) {
+            return $currentMonth > 0 ? 100 : 0;
+        }
+
+        return round((($currentMonth - $lastMonth) / $lastMonth) * 100);
     }
 
     /**
