@@ -71,7 +71,11 @@ class TransactionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+        $students = Student::all();
+        $books = Book::all();
+
+        return view('admin.transactions.edit', compact('transaction', 'students', 'books'));
     }
 
     /**
@@ -79,7 +83,24 @@ class TransactionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+
+        $validated = $request->validate([
+            'txn_no' => 'required',
+            'student_id' => 'required|exists:students,student_id',
+            'book_id' => 'required|exists:books,id',
+            'date_borrowed' => 'required|date',
+            'due_date' => 'required|date|after:date_borrowed',
+            'by' => 'required',
+        ]);
+
+        // Update date_added to keep track of last modification
+        $validated['date_added'] = now();
+
+        $transaction->update($validated);
+
+        return redirect()->route('transactions.index')
+            ->with('success', 'Transaction updated successfully!');
     }
 
     /**

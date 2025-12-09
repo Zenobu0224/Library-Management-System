@@ -52,7 +52,7 @@ Transactions | Library Management
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-success btn-wave" href="">
+                                                        <a class="btn btn-sm btn-success btn-wave" href="{{route('transactions.edit', $transaction->id)}}">
                                                             <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
                                                         </a>
 

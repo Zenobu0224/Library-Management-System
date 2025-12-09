@@ -19,8 +19,9 @@
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('students.store') }}">
+            <form method="POST" action="{{ route('students.update', $student->id) }}">
                 @csrf
+                @method('PUT')
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="student_id" value="{{$student->student_id}}">
                     <label for="floatingPassword">Student ID</label>
