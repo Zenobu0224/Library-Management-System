@@ -8,15 +8,16 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DashboardController;  // Add this line
 use App\Models\Transaction;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

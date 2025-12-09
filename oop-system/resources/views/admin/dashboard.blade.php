@@ -9,1016 +9,233 @@
 
     <!-- Start::page-header -->
     <div class="d-flex align-items-center justify-content-between page-header-breadcrumb flex-wrap gap-2">
-        <div>
-            <h1 class="page-title fw-medium fs-25 mb-0 pl-10">Dashboard</h1>
-        </div>
-        <div class="d-flex align-items-center gap-2 flex-wrap">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white border"> <i class="ri-calendar-line"></i> </div>
-                    <input type="text" class="form-control breadcrumb-input" id="daterange" placeholder="Search By Date Range">
-                </div>
-            </div>
-            <div class="btn-list">
-                <button class="btn btn-white btn-wave">
-                    <i class="ri-filter-3-line align-middle me-1 lh-1"></i> Filter
-                </button>
-                <button class="btn btn-primary btn-wave me-0">
-                    <i class="ri-share-forward-line me-1"></i> Share
-                </button>
-            </div>
+        <div class="d-flex align-items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard" style="margin-left: 16px;">
+                <rect width="7" height="9" x="3" y="3" rx="1"/>
+                <rect width="7" height="5" x="14" y="3" rx="1"/>
+                <rect width="7" height="9" x="14" y="12" rx="1"/>
+                <rect width="7" height="5" x="3" y="16" rx="1"/>
+            </svg>
+            <h1 class="page-title fw-medium fs-25 mb-0">Dashboard</h1>
         </div>
     </div>
     <!-- End::page-header -->
 
     <!-- Start:: row-1 -->
-    <div class="row">
-        <div class="col-xl-8">
-            <div class="row">
-                <div class="col-xxl-3 col-xl-6">
-                    <div class="card custom-card overflow-hidden main-content-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-start justify-content-between mb-2">
-                                <div>
-                                    <span class="text-muted d-block mb-1">Total Books</span>
-                                    <h4 class="fw-medium mb-0">854</h4>
-                                </div>
-                                <div class="lh-1">
-                                    <span class="avatar avatar-md avatar-rounded bg-primary">
-                                        <i class="ti ti-shopping-cart fs-5"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-muted fs-13">Increased By <span class="text-success">2.56%<i class="ti ti-arrow-narrow-up fs-16"></i></span></div>
+    <div class="row mt-4">
+        <!-- Total Books Card -->
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card custom-card shadow-sm border-0 overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1 fs-14 fw-medium">Total Books</p>
+                            <h3 class="mb-0 fw-bold">{{ number_format($totalBooks) }}</h3>
+                            <span class="badge {{ $percentageIncrease >= 0 ? 'bg-success-transparent text-success' : 'bg-danger-transparent text-danger' }} mt-2">
+                                <i class="bi bi-arrow-{{ $percentageIncrease >= 0 ? 'up' : 'down' }} me-1"></i>{{ abs($percentageIncrease) }}% this month
+                            </span>
+                        </div>
+                        <div class="dashboard-icon-wrapper bg-primary-transparent rounded-circle p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
-                <div class="col-xxl-3 col-xl-6">
-                    <div class="card custom-card overflow-hidden main-content-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-start justify-content-between mb-2">
-                                <div>
-                                    <span class="d-block text-muted mb-1">Total Registered Users</span>
-                                    <h4 class="fw-medium mb-0">31,876</h4>
-                                </div>
-                                <div class="lh-1">
-                                    <span class="avatar avatar-md avatar-rounded bg-primary1">
-                                        <i class="ti ti-users fs-5"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-muted fs-13">Increased By <span class="text-success">0.34%<i class="ti ti-arrow-narrow-up fs-16"></i></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-xl-6">
-                    <div class="card custom-card overflow-hidden main-content-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-start justify-content-between mb-2">
-                                <div>
-                                    <span class="text-muted d-block mb-1">Total Outstanding Fines</span>
-                                    <h4 class="fw-medium mb-0">$3,64,241</h4>
-                                </div>
-                                <div class="lh-1">
-                                    <span class="avatar avatar-md avatar-rounded bg-primary2">
-                                        <i class="ti ti-currency-dollar fs-5"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-muted fs-13">Increased By <span class="text-success">7.66%<i class="ti ti-arrow-narrow-up fs-16"></i></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-xl-6">
-                    <div class="card custom-card overflow-hidden main-content-card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-start justify-content-between mb-2">
-                                <div>
-                                    <span class="text-muted d-block mb-1">Total Transactions</span>
-                                    <h4 class="fw-medium mb-0">1,76,586</h4>
-                                </div>
-                                <div class="lh-1">
-                                    <span class="avatar avatar-md avatar-rounded bg-primary3">
-                                        <i class="ti ti-chart-bar fs-5"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-muted fs-13">Decreased By <span class="text-danger">0.74%<i class="ti ti-arrow-narrow-down fs-16"></i></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-8 col-xl-6">
-                    <div class="card custom-card">
-                        <div class="card-header justify-content-between">
-                            <div class="card-title">
-                                Transaction Flow
-                            </div>
-                            <div class="dropdown"> 
-                                <a href="javascript:void(0);" class="btn btn-sm btn-light text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true"> Sort By</a> 
-                                <ul class="dropdown-menu" role="menu" data-popper-placement="bottom-end"> 
-                                    <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
-                                        <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li> 
-                                        <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li> 
-                                </ul> 
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="sales-overview"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-4 col-xl-6">
-                    <div class="card custom-card overflow-hidden">
-                        <div class="card-header pb-0 justify-content-between">
-                            <div class="card-title">
-                                Book Status
-                            </div>
-                            <div class="dropdown">
-                                <a aria-label="anchor" href="javascript:void(0);" class="btn btn-light btn-icons btn-sm text-muted" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fe fe-more-vertical"></i>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">Today</a></li>
-                                    <li class="border-bottom"><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body py-4 px-3">
-                            <div class="d-flex gap-3 mb-3">
-                                <div class="avatar avatar-md bg-primary-transparent">
-                                    <i class="ti ti-trending-up fs-5"></i>
-                                </div>
-                                <div class="flex-fill d-flex align-items-start justify-content-between">
-                                    <div>
-                                        <span class="fs-11 mb-1 d-block fw-medium">TOTAL ORDERS</span> 
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <h4 class="mb-0 d-flex align-items-center">3,736<span class="text-success fs-12 ms-2 op-1"><i class="ti ti-trending-up align-middle me-1"></i>0.57%</span></h4>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="text-success fs-12 text-decoration-underline">Earnings ?</a>
-                                </div>
-                            </div>
-                            <div id="orders" class="my-2"></div>
-                        </div>
-                        <div class="card-footer border-top border-block-start-dashed">
-                            <div class="d-grid">
-                                <button class="btn btn-primary-ghost btn-wave fw-medium waves-effect waves-light table-icon">Complete Statistics<i class="ti ti-arrow-narrow-right ms-2 fs-16 d-inline-block"></i></button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-footer bg-primary-transparent border-0 py-2">
+                    <a href="{{route('books.index')}}" class="text-primary text-decoration-none fs-13 fw-medium d-flex align-items-center justify-content-center">
+                        View All Books
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="col-xl-4">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card custom-card main-dashboard-banner overflow-hidden">
-                        <div class="card-body p-4">
-                            <div class="row justify-content-between">
-                                <div class="col-xxl-7 col-xl-5 col-lg-5 col-md-5 col-sm-5">
-                                    <h4 class="mb-3 fw-medium text-fixed-white">Upgrade to get more</h4>
-                                    <p class="mb-4 text-fixed-white">Maximize sales insights. Optimize performance. Achieve success with pro.</p>
-                                    <a href="javascript:void(0);" class="fw-medium text-fixed-white text-decoration-underline">Upgrade To Pro<i class="ti ti-arrow-narrow-right"></i></a>
-                                </div>
-                                <div class="col-xxl-4 col-xl-7 col-lg-7 col-md-7 col-sm-7 d-sm-block d-none text-end my-auto">
-                                    <img src="../assets/images/media/media-86.png" alt="" class="img-fluid">
-                                </div>
-                            </div>
+
+        <!-- Total Categories Card -->
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card custom-card shadow-sm border-0 overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1 fs-14 fw-medium">Total Categories</p>
+                            <h3 class="mb-0 fw-bold">24</h3>
+                            <span class="badge bg-info-transparent text-info mt-2">
+                                <i class="bi bi-dash me-1"></i>No change
+                            </span>
+                        </div>
+                        <div class="dashboard-icon-wrapper bg-success-transparent rounded-circle p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-success">
+                                <path d="M3 3h7v7H3z"/>
+                                <path d="M14 3h7v7h-7z"/>
+                                <path d="M14 14h7v7h-7z"/>
+                                <path d="M3 14h7v7H3z"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-12">
-                    <div class="card custom-card overflow-hidden">
-                        <div class="card-header justify-content-between">
-                            <div class="card-title">
-                                Top Borrowed Categories
-                            </div>
-                            <div class="dropdown"> 
-                                <a href="javascript:void(0);" class="btn btn-sm btn-light text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true"> Sort By</a> 
-                                <ul class="dropdown-menu" role="menu" data-popper-placement="bottom-end"> 
-                                    <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
-                                        <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li> 
-                                        <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li> 
-                                </ul> 
-                            </div>
+                <div class="card-footer bg-success-transparent border-0 py-2">
+                    <a href="{{route('categories.index')}}" class="text-success text-decoration-none fs-13 fw-medium d-flex align-items-center justify-content-center">
+                        Manage Categories
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Students Card -->
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card custom-card shadow-sm border-0 overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1 fs-14 fw-medium">Total Students</p>
+                            <h3 class="mb-0 fw-bold">387</h3>
+                            <span class="badge bg-success-transparent text-success mt-2">
+                                <i class="bi bi-arrow-up me-1"></i>8% this month
+                            </span>
                         </div>
-                        <div class="card-body p-0">
-                            <div class="p-3 pb-0">
-                                <div class="progress-stacked progress-sm mb-2 gap-1">
-                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-primary1" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-primary2" role="progressbar" style="width: 15%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-primary3" role="progressbar" style="width: 25%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 20%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <div>Overall Sales</div>
-                                    <div class="h6 mb-0"><span class="text-success me-2 fs-11">2.74%<i class="ti ti-arrow-narrow-up"></i></span>1,25,875</div>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table text-nowrap">
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <span class="fw-medium top-category-name one">Clothing</span>
-                                            </td>
-                                            <td>
-                                                <span class="fw-medium">31,245</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="text-muted fs-12">25% Gross</span>
-                                            </td>
-                                            <td class="text-end">
-                                                <span class="badge bg-success">0.45% <i class="ti ti-trending-up"></i></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="fw-medium top-category-name two">Electronics</span>
-                                            </td>
-                                            <td>
-                                                <span class="fw-medium">29,553</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="text-muted fs-12">16% Gross</span>
-                                            </td>
-                                            <td class="text-end">
-                                                <span class="badge bg-warning">0.27% <i class="ti ti-trending-up"></i></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="fw-medium top-category-name three">Grocery</span>
-                                            </td>
-                                            <td>
-                                                <span class="fw-medium">24,577</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="text-muted fs-12">22% Gross</span>
-                                            </td>
-                                            <td class="text-end">
-                                                <span class="badge bg-secondary">0.63% <i class="ti ti-trending-up"></i></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="fw-medium top-category-name four">Automobiles</span>
-                                            </td>
-                                            <td>
-                                                <span class="fw-medium">19,278</span>
-                                            </td>
-                                            <td class="text-center">
-                                                <span class="text-muted fs-12">18% Gross</span>
-                                            </td>
-                                            <td class="text-end">
-                                                <span class="badge bg-primary1">1.14% <i class="ti ti-trending-down"></i></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="border-bottom-0">
-                                                <span class="fw-medium top-category-name five">others</span>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <span class="fw-medium">15,934</span>
-                                            </td>
-                                            <td class="text-center border-bottom-0">
-                                                <span class="text-muted fs-12">15% Gross</span>
-                                            </td>
-                                            <td class="text-end border-bottom-0">
-                                                <span class="badge bg-primary">3.87% <i class="ti ti-trending-up"></i></span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="dashboard-icon-wrapper bg-warning-transparent rounded-circle p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-warning">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
                         </div>
                     </div>
+                </div>
+                <div class="card-footer bg-warning-transparent border-0 py-2">
+                    <a href="{{route('students.index')}}" class="text-warning text-decoration-none fs-13 fw-medium d-flex align-items-center justify-content-center">
+                        View All Students
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Users Card -->
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card custom-card shadow-sm border-0 overflow-hidden">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <p class="text-muted mb-1 fs-14 fw-medium">Total Admins</p>
+                            <h3 class="mb-0 fw-bold">12</h3>
+                            <span class="badge bg-success-transparent text-success mt-2">
+                                <i class="bi bi-arrow-up me-1"></i>2 new
+                            </span>
+                        </div>
+                        <div class="dashboard-icon-wrapper bg-danger-transparent rounded-circle p-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-danger">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <polyline points="16 11 18 13 22 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-danger-transparent border-0 py-2">
+                    <a href="{{route('users.index')}}" class="text-danger text-decoration-none fs-13 fw-medium d-flex align-items-center justify-content-center">
+                        Manage Admins
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
     <!-- End:: row-1 -->
 
-    <!-- Start:: row-2 -->
+    <!-- Start:: row-2 - Additional Stats -->
     <div class="row">
-        <div class="col-xxl-3 col-xl-6">
-            <div class="card custom-card overflow-hidden">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        Latest Transactions
-                    </div>
-                    <a href="javascript:void(0);" class="btn btn-light btn-wave btn-sm text-muted">View All<i class="ti ti-arrow-narrow-right ms-1"></i></a>
+        <!-- Active Transactions Card -->
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card custom-card shadow-sm border-0">
+                <div class="card-header bg-transparent border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="card-title mb-0 fw-semibold">Active Transactions</h6>
+                    <span class="badge bg-primary">Live</span>
                 </div>
-                <div class="card-body p-0 pb-1">
-                    <div class="table-responsive">
-                        <table class="table text-nowrap">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/ecommerce/jpg/4.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div class="fw-medium">SwiftBuds</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="fw-medium">$39.99</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary">Success</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/ecommerce/jpg/6.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div class="fw-medium">CozyCloud Pillow</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="fw-medium">$19.95</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary1">Pending</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/ecommerce/jpg/3.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div class="fw-medium">AquaGrip Bottle</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="fw-medium">$9.99</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary2">Failed</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/ecommerce/jpg/1.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div class="fw-medium">GlowLite Lamp</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="fw-medium">$24.99</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary3">Success</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/ecommerce/jpg/2.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div class="fw-medium">Bitvitamin</div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="fw-medium">$26.45</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-secondary">Success</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="border-bottom-0">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/ecommerce/jpg/5.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div class="fw-medium">FitTrack</div>
-                                        </div>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <span class="fw-medium">$49.95</span>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <span class="badge bg-warning">Success</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="card-body text-center py-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+                            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+                            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+                            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+                        </svg>
                     </div>
+                    <h2 class="fw-bold mb-1">156</h2>
+                    <p class="text-muted mb-0">Books Currently Borrowed</p>
                 </div>
             </div>
         </div>
-        <div class="col-xxl-3 col-xl-6">
-            <div class="card custom-card">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        Recent Activity
-                    </div>
-                    <a href="javascript:void(0);" class="btn btn-light btn-wave btn-sm text-muted waves-effect waves-light">View All</a>
+
+        <!-- Overdue Books Card -->
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card custom-card shadow-sm border-0">
+                <div class="card-header bg-transparent border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="card-title mb-0 fw-semibold">Overdue Books</h6>
+                    <span class="badge bg-danger">Alert</span>
                 </div>
-                <div class="card-body">
-                    <ul class="list-unstyled recent-activity-list">
-                        <li>
-                            <div>
-                                <div>
-                                    <div class="fw-medium fs-14">John Doe</div>
-                                    <span class="fs-12 activity-time">
-                                        12 Hrs
-                                    </span>
-                                </div>
-                                <span class="d-block text-muted">
-                                    Updated the product description for <span class="text-primary fw-medium">Widget X</span>.
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <div>
-                                    <div class="fw-medium fs-14">Jane Smith</div>
-                                    <span class="fs-12 activity-time">
-                                        4:32pm
-                                    </span>
-                                </div>
-                                <span class="d-block text-muted">
-                                        added a <span class="fw-medium text-dark">new user</span> with username <span class="fw-medium text-primary1">janesmith89.</span>
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <div>
-                                    <div class="fw-medium fs-14">Michael Brown</div>
-                                    <span class="fs-12 activity-time">
-                                        11:45am
-                                    </span>
-                                </div>    
-                                <span class="d-block text-muted">
-                                    Changed the status of order <a href="javascript:void(0);" class="fw-medium text-dark text-decoration-underline">#12345</a> to <span class="fw-medium text-primary2">Shipped.</span>
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <div>
-                                    <div class="fw-medium fs-14">David Wilson</div>
-                                    <span class="fs-12 activity-time">
-                                        9:27am
-                                    </span>
-                                </div>    
-                                <span class="d-block text-muted">
-                                        added <span class="fw-medium text-primary3">John Smith</span> to academy group this day.
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <div>
-                                    <div class="fw-medium fs-14">Robert Jackson</div>
-                                    <span class="fs-12 activity-time">
-                                        8:56pm
-                                    </span>
-                                </div>   
-                                <span class="d-block text-muted">
-                                        added a comment to the task <span class="fw-medium text-secondary">Update website layout.</span>
-                                </span> 
-                            </div>
-                        </li>
-                    </ul>                 
+                <div class="card-body text-center py-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-danger">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h2 class="fw-bold mb-1 text-danger">23</h2>
+                    <p class="text-muted mb-0">Need Immediate Attention</p>
                 </div>
             </div>
         </div>
-        <div class="col-xxl-3 col-xl-6">
-            <div class="card custom-card">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        Sales Statistics
-                    </div>
-                    <div class="dropdown"> 
-                        <a href="javascript:void(0);" class="btn btn-sm btn-light text-muted dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true"> Sort By</a> 
-                        <ul class="dropdown-menu" role="menu" data-popper-placement="bottom-end"> 
-                            <li><a class="dropdown-item" href="javascript:void(0);">This Week</a></li>
-                                <li><a class="dropdown-item" href="javascript:void(0);">Last Week</a></li> 
-                                <li><a class="dropdown-item" href="javascript:void(0);">This Month</a></li> 
-                        </ul> 
-                    </div>
+
+        <!-- Available Books Card -->
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card custom-card shadow-sm border-0">
+                <div class="card-header bg-transparent border-bottom d-flex align-items-center justify-content-between">
+                    <h6 class="card-title mb-0 fw-semibold">Available Books</h6>
+                    <span class="badge bg-success">Ready</span>
                 </div>
-                <div class="card-body">
-                    <div class="d-flex flex-wrap gap-2 justify-content-between flex-fill pb-3">
-                        <div class="py-3 px-4 rounded border border-dashed bg-light">
-                            <span>Total Sales</span>
-                            <p class="fw-medium fs-14 mb-0">$3.478B</p>
-                        </div>
-                        <div class="py-3 px-4 rounded border border-dashed bg-light">
-                            <span>This Year</span>
-                            <p class="text-success fw-medium fs-14 mb-0">4,25,349</p>
-                        </div>
-                        <div class="py-3 px-4 rounded border border-dashed bg-light">
-                            <span>Last Year</span>
-                            <p class="text-danger fw-medium fs-14 mb-0">3,41,622</p>
-                        </div>
+                <div class="card-body text-center py-4">
+                    <div class="mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-success">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
                     </div>
-                    <div id="sales-statistics"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xxl-3 col-xl-6">
-            <div class="card custom-card overflow-hidden">
-                <div class="card-header pb-0 justify-content-between">
-                    <div class="card-title">
-                        Overall Statistics
-                    </div>
-                    <a href="javascript:void(0);" class="btn btn-light btn-wave btn-sm text-muted waves-effect waves-light">View All</a>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group activity-feed">
-                        <li class="list-group-item">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="lh-1">
-                                    <p class="mb-2 fs-13 text-muted">Total Expenses</p>
-                                    <h6 class="fw-medium mb-0">$134,032<span class="fs-12 text-success ms-2 fw-normal d-inline-block">0.45%<i class="ti ti-trending-up ms-1"></i></span></h6>
-                                </div>
-                                <div class="text-end">
-                                    <div id="line-graph1"></div>
-                                    <a href="javascript:void(0);" class="fs-12">
-                                        <span>See more</span>
-                                        <span class="table-icon"><i class="ms-1 d-inline-block ri-arrow-right-line"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="lh-1">
-                                    <p class="mb-2 fs-13 text-muted">General Leads</p>
-                                    <h6 class="fw-medium mb-0">74,354<span class="fs-12 text-danger ms-2 fw-normal d-inline-block">3.84%<i class="ti ti-trending-down ms-1"></i></span></h6>
-                                </div>
-                                <div class="text-end">
-                                    <div id="line-graph2"></div>
-                                    <a href="javascript:void(0);" class="fs-12">
-                                        <span>See more</span>
-                                        <span class="table-icon"><i class="ms-1 d-inline-block ri-arrow-right-line"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="lh-1">
-                                    <p class="mb-2 fs-13 text-muted">Churn Rate</p>
-                                    <h6 class="fw-medium mb-0">6.02%<span class="fs-12 text-success ms-2 fw-normal d-inline-block">0.72%<i class="ti ti-trending-up ms-1"></i></span></h6>
-                                </div>
-                                <div class="text-end">
-                                    <div id="line-graph3"></div>
-                                    <a href="javascript:void(0);" class="fs-12">
-                                        <span>See more</span>
-                                        <span class="table-icon"><i class="ms-1 d-inline-block ri-arrow-right-line"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="lh-1">
-                                    <p class="mb-2 fs-13 text-muted">New Users</p>
-                                    <h6 class="fw-medium mb-0">7,893<span class="fs-12 text-success ms-2 fw-normal d-inline-block">11.05%<i class="ti ti-trending-up ms-1"></i></span></h6>
-                                </div>
-                                <div class="text-end">
-                                    <div id="line-graph4"></div>
-                                    <a href="javascript:void(0);" class="fs-12">
-                                        <span>See more</span>
-                                        <span class="table-icon"><i class="ms-1 d-inline-block ri-arrow-right-line"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <div class="lh-1">
-                                    <p class="mb-2 fs-13 text-muted">Returning Users</p>
-                                    <h6 class="fw-medium mb-0">3,258<span class="fs-12 text-success ms-2 fw-normal d-inline-block">1.69%<i class="ti ti-trending-up ms-1"></i></span></h6>
-                                </div>
-                                <div class="text-end">
-                                    <div id="line-graph5"></div>
-                                    <a href="javascript:void(0);" class="fs-12">
-                                        <span>See more</span>
-                                        <span class="table-icon"><i class="ms-1 d-inline-block ri-arrow-right-line"></i></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    <h2 class="fw-bold mb-1 text-success">1,089</h2>
+                    <p class="text-muted mb-0">Ready to be Borrowed</p>
                 </div>
             </div>
         </div>
     </div>
     <!-- End:: row-2 -->
 
-    <!-- Start:: row-3 -->
-    <div class="row">
-        <div class="col-xl-9">
-            <div class="card custom-card overflow-hidden">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        Recent Orders
-                    </div>
-                    <a href="javascript:void(0);" class="btn btn-light btn-wave btn-sm text-muted waves-effect waves-light">View All</a>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table text-nowrap">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel1" value="" aria-label="...">
-                                    </th>
-                                    <th>Customer</th>
-                                    <th>Product</th>
-                                    <th class="text-center">Quantity</th>
-                                    <th class="text-center">Amount</th>
-                                    <th>Status</th>
-                                    <th>Date Ordered</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel02" value="" aria-label="..." checked>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/faces/1.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span class="d-block fw-medium">Elena smith</span>
-                                                <span class="d-block fs-11 text-muted">elenasmith387@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        All-Purpose Cleaner
-                                    </td>
-                                    <td class="text-center">
-                                        3
-                                    </td>
-                                    <td class="text-center">
-                                        $9.99
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary-transparent">In Progress</span>
-                                    </td>
-                                    <td>
-                                        03,Sep 2024
-                                    </td>
-                                    <td>
-                                        <div class="btn-list">
-                                            <button class="btn btn-sm btn-icon btn-success-light"><i class="ri-pencil-line"></i></button>
-                                            <button class="btn btn-sm btn-icon btn-danger-light"><i class="ri-delete-bin-line"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel12" value="" aria-label="...">
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/faces/12.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span class="d-block fw-medium">Nelson Gold</span>
-                                                <span class="d-block fs-11 text-muted">noahrussell556@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Kitchen Knife Set
-                                    </td>
-                                    <td class="text-center">
-                                        4
-                                    </td>
-                                    <td class="text-center">
-                                        $49.99
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary1-transparent">Pending</span>
-                                    </td>
-                                    <td>
-                                        26,Jul 2024
-                                    </td>
-                                    <td>
-                                        <div class="btn-list">
-                                            <button class="btn btn-sm btn-icon btn-success-light"><i class="ri-pencil-line"></i></button>
-                                            <button class="btn btn-sm btn-icon btn-danger-light"><i class="ri-delete-bin-line"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel42" value="" aria-label="..." checked>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/faces/6.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span class="d-block fw-medium">Grace Mitchell</span>
-                                                <span class="d-block fs-11 text-muted">gracemitchell79@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Velvet Throw Blanket
-                                    </td>
-                                    <td class="text-center">
-                                        2
-                                    </td>
-                                    <td class="text-center">
-                                        $29.99
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary2-transparent">Success</span>
-                                    </td>
-                                    <td>
-                                        12,May 2024
-                                    </td>
-                                    <td>
-                                        <div class="btn-list">
-                                            <button class="btn btn-sm btn-icon btn-success-light"><i class="ri-pencil-line"></i></button>
-                                            <button class="btn btn-sm btn-icon btn-danger-light"><i class="ri-delete-bin-line"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel32" value="" aria-label="..." checked>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/faces/14.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span class="d-block fw-medium">Spencer Robin</span>
-                                                <span class="d-block fs-11 text-muted">leophillips124@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Aromatherapy Diffuser
-                                    </td>
-                                    <td class="text-center">
-                                        4
-                                    </td>
-                                    <td class="text-center">
-                                        $19.99
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary2-transparent">Success</span>
-                                    </td>
-                                    <td>
-                                        15,Aug 2024
-                                    </td>
-                                    <td>
-                                        <div class="btn-list">
-                                            <button class="btn btn-sm btn-icon btn-success-light"><i class="ri-pencil-line"></i></button>
-                                            <button class="btn btn-sm btn-icon btn-danger-light"><i class="ri-delete-bin-line"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">
-                                        <input class="form-check-input" type="checkbox" id="checkboxNoLabel2" value="" aria-label="...">
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-3">
-                                            <div class="lh-1">
-                                                <span class="avatar avatar-sm">
-                                                    <img src="../assets/images/faces/3.jpg" alt="">
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span class="d-block fw-medium">Chloe Lewis</span>
-                                                <span class="d-block fs-11 text-muted">chloelewis67@gmail.com</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        Insulated Water Bottle
-                                    </td>
-                                    <td class="text-center">
-                                        2
-                                    </td>
-                                    <td class="text-center">
-                                        $14.99
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary3-transparent">Pending</span>
-                                    </td>
-                                    <td>
-                                        11,Oct 2024
-                                    </td>
-                                    <td>
-                                        <div class="btn-list">
-                                            <button class="btn btn-sm btn-icon btn-success-light"><i class="ri-pencil-line"></i></button>
-                                            <button class="btn btn-sm btn-icon btn-danger-light"><i class="ri-delete-bin-line"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3">
-            <div class="card custom-card">
-                <div class="card-header justify-content-between">
-                    <div class="card-title">
-                        Sales By Country
-                    </div>
-                    <a href="javascript:void(0);" class="btn btn-light btn-wave btn-sm text-muted waves-effect waves-light">View All</a>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled sales-country-list">
-                        <li>
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="lh-1">
-                                    <span class="avatar avatar-sm p-1 bg-light border">
-                                        <img src="../assets/images/flags/us_flag.jpg" alt="">
-                                    </span>
-                                </div>
-                                <div class="flex-fill">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="d-block fw-medium mb-2 lh-1">United States</span>
-                                        <span class="fs-14 fw-medium d-block lh-1">31,672</span>
-                                    </div>
-                                    <div class="progress progress-md p-1" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                            style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="lh-1">
-                                    <span class="avatar avatar-sm p-1 bg-light border">
-                                        <img src="../assets/images/flags/italy_flag.jpg" alt="">
-                                    </span>
-                                </div>
-                                <div class="flex-fill">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="d-block fw-medium mb-2 lh-1">Italy</span>
-                                        <span class="fs-14 fw-medium d-block lh-1">29,557</span>
-                                    </div>
-                                    <div class="progress progress-md p-1" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-primary1 progress-bar-striped progress-bar-animated"
-                                            style="width: 85%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="lh-1">
-                                    <span class="avatar avatar-sm p-1 bg-light border">
-                                        <img src="../assets/images/flags/spain_flag.jpg" alt="">
-                                    </span>
-                                </div>
-                                <div class="flex-fill">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="d-block fw-medium mb-2 lh-1">Spain</span>
-                                        <span class="fs-14 fw-medium d-block lh-1">24,562</span>
-                                    </div>
-                                    <div class="progress progress-md p-1" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-primary2 progress-bar-striped progress-bar-animated"
-                                            style="width: 80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="lh-1">
-                                    <span class="avatar avatar-sm p-1 bg-light border">
-                                        <img src="../assets/images/flags/uae_flag.jpg" alt="">
-                                    </span>
-                                </div>
-                                <div class="flex-fill">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="d-block fw-medium mb-2 lh-1">Uae</span>
-                                        <span class="fs-14 fw-medium d-block lh-1">21,532</span>
-                                    </div>
-                                    <div class="progress progress-md p-1" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-primary3 progress-bar-striped progress-bar-animated"
-                                            style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="lh-1">
-                                    <span class="avatar avatar-sm p-1 bg-light border">
-                                        <img src="../assets/images/flags/argentina_flag.jpg" alt="">
-                                    </span>
-                                </div>
-                                <div class="flex-fill">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="d-block fw-medium mb-2 lh-1">Argentina</span>
-                                        <span class="fs-14 fw-medium d-block lh-1">18,753</span>
-                                    </div>
-                                    <div class="progress progress-md p-1" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-secondary progress-bar-striped progress-bar-animated"
-                                            style="width: 70%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="lh-1">
-                                    <span class="avatar avatar-sm p-1 bg-light border">
-                                        <img src="../assets/images/flags/china_flag.jpg" alt="">
-                                    </span>
-                                </div>
-                                <div class="flex-fill">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="d-block fw-medium mb-2 lh-1">China</span>
-                                        <span class="fs-14 fw-medium d-block lh-1">12,342</span>
-                                    </div>
-                                    <div class="progress progress-md p-1" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
-                                            style="width: 65%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex align-items-start gap-3">
-                                <div class="lh-1">
-                                    <span class="avatar avatar-sm p-1 bg-light border">
-                                        <img src="../assets/images/flags/french_flag.jpg" alt="">
-                                    </span>
-                                </div>
-                                <div class="flex-fill">
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <span class="d-block fw-medium mb-2 lh-1">French</span>
-                                        <span class="fs-14 fw-medium d-block lh-1">15,533</span>
-                                    </div>
-                                    <div class="progress progress-md p-1" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
-                                            style="width: 60%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End:: row-3 -->
-
 </div>
+
+<style>
+.dashboard-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-footer a:hover {
+    text-decoration: underline !important;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.35em 0.65em;
+}
+</style>
 @endsection
