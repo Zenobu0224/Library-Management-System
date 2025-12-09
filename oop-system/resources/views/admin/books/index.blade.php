@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Assets | Library Management System
+    Books | Library Management System
 @endsection
 
 @section('contents')

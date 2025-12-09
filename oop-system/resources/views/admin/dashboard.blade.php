@@ -31,8 +31,8 @@
                         <div>
                             <p class="text-muted mb-1 fs-14 fw-medium">Total Books</p>
                             <h3 class="mb-0 fw-bold">{{ number_format($totalBooks) }}</h3>
-                            <span class="badge {{ $percentageIncrease >= 0 ? 'bg-success-transparent text-success' : 'bg-danger-transparent text-danger' }} mt-2">
-                                <i class="bi bi-arrow-{{ $percentageIncrease >= 0 ? 'up' : 'down' }} me-1"></i>{{ abs($percentageIncrease) }}% this month
+                            <span class="badge {{ $bookPercentageIncrease >= 0 ? 'bg-success-transparent text-success' : 'bg-danger-transparent text-danger' }} mt-2">
+                                <i class="bi bi-arrow-{{ $bookPercentageIncrease >= 0 ? 'up' : 'down' }} me-1"></i>{{ abs($bookPercentageIncrease) }}% this month
                             </span>
                         </div>
                         <div class="dashboard-icon-wrapper bg-primary-transparent rounded-circle p-3">
@@ -58,9 +58,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text-muted mb-1 fs-14 fw-medium">Total Categories</p>
-                            <h3 class="mb-0 fw-bold">24</h3>
-                            <span class="badge bg-info-transparent text-info mt-2">
-                                <i class="bi bi-dash me-1"></i>No change
+                            <h3 class="mb-0 fw-bold">{{number_format($totalCategories)}}</h3>
+                            <span class="badge {{ $categoryPercentageIncrease >= 0 ? 'bg-success-transparent text-success' : 'bg-danger-transparent text-danger' }} mt-2">
+                                <i class="bi bi-arrow-{{ $categoryPercentageIncrease >= 0 ? 'up' : 'down' }} me-1"></i>{{ abs($categoryPercentageIncrease) }}% this month
                             </span>
                         </div>
                         <div class="dashboard-icon-wrapper bg-success-transparent rounded-circle p-3">
@@ -89,9 +89,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text-muted mb-1 fs-14 fw-medium">Total Students</p>
-                            <h3 class="mb-0 fw-bold">387</h3>
-                            <span class="badge bg-success-transparent text-success mt-2">
-                                <i class="bi bi-arrow-up me-1"></i>8% this month
+                            <h3 class="mb-0 fw-bold">{{number_format($totalStudents)}}</h3>
+                            <span class="badge {{ $studentPercentageIncrease >= 0 ? 'bg-success-transparent text-success' : 'bg-danger-transparent text-danger' }} mt-2">
+                                <i class="bi bi-arrow-{{ $studentPercentageIncrease >= 0 ? 'up' : 'down' }} me-1"></i>{{ abs($studentPercentageIncrease) }}% this month
                             </span>
                         </div>
                         <div class="dashboard-icon-wrapper bg-warning-transparent rounded-circle p-3">
@@ -120,9 +120,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <p class="text-muted mb-1 fs-14 fw-medium">Total Admins</p>
-                            <h3 class="mb-0 fw-bold">12</h3>
-                            <span class="badge bg-success-transparent text-success mt-2">
-                                <i class="bi bi-arrow-up me-1"></i>2 new
+                            <h3 class="mb-0 fw-bold">{{number_format($totalUsers)}}</h3>
+                            <span class="badge {{ $usersPercentageIncrease >= 0 ? 'bg-success-transparent text-success' : 'bg-danger-transparent text-danger' }} mt-2">
+                                <i class="bi bi-arrow-{{ $usersPercentageIncrease >= 0 ? 'up' : 'down' }} me-1"></i>{{ abs($usersPercentageIncrease) }}% this month
                             </span>
                         </div>
                         <div class="dashboard-icon-wrapper bg-danger-transparent rounded-circle p-3">
@@ -162,7 +162,7 @@
                             <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
                         </svg>
                     </div>
-                    <h2 class="fw-bold mb-1">156</h2>
+                    <h2 class="fw-bold mb-1">{{number_format($totalTransactions)}}</h2>
                     <p class="text-muted mb-0">Books Currently Borrowed</p>
                 </div>
             </div>
