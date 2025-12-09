@@ -37,4 +37,15 @@ class Transaction extends Model
     {
         return $query->whereNull('date_returned');
     }
+
+    // Add these relationships
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'student_id');
+    }
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
 }

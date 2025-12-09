@@ -16,4 +16,10 @@ class Student extends Model
         'course',
         'year_level'
     ];
+
+    // student-transaction relationship
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'student_id', 'student_id');
+    }
 }

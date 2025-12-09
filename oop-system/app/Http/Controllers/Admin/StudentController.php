@@ -81,9 +81,16 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         $student = Student::findOrFail($id);
+        
+        // Check if student has any transactions
+        if ($student->transactions()->count() > 0) {
+            return redirect()->route('students.index')
+                ->with('error', 'Cannot delete student! This student has ' . $student->transactions()->count() . ' transaction(s) in the system.');
+        }
+        
         $student->delete();
 
         return redirect()->route('students.index')
-            ->with('Success', 'Student removed successfully');  
+            ->with('success', 'Student removed successfully!');
     }
 }
