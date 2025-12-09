@@ -1,5 +1,4 @@
 <aside class="app-sidebar sticky" id="sidebar">
-    
 
             <!-- Start::main-sidebar-header -->
             <div class="main-sidebar-header">
@@ -7,15 +6,11 @@
                     <img src="{{ asset('backend/assets/images/lib-manage.png') }}"
                         alt="logo"
                         class="h-8 w-auto object-contain align-middle inline-block">
-
-                    <span class="font-bold text-white">Library Management</span>
                 </a>
             </div>
-
-
-
             <!-- End::main-sidebar-header -->
 
+            
             <!-- Start::main-sidebar -->
             <div class="main-sidebar" id="sidebar-scroll">
 

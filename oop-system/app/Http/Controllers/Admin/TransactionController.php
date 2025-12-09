@@ -19,7 +19,9 @@ class TransactionController extends Controller
     {
 
         $transactions = Transaction::all();
-        return view('admin.transactions.index', compact('transactions'));
+        // Get IDs of overdue transactions
+        $overdueIds = Transaction::overdue()->pluck('id')->toArray();
+        return view('admin.transactions.index', compact('transactions', 'overdueIds'));
     }
 
     /**

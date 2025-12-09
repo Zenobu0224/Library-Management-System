@@ -7,7 +7,7 @@ Transactions | Library Management
 @section('contents')
 <!-- Start:: row-10 -->
                 <div class="row">
-                    <div class="col-xl-11 mt-5 mx-auto">
+                    <div class="col-xl-12 mt-3 mx-auto">
                         <div class="card custom-card">
                             <div class="card-header justify-content-between">
                                 <div class="card-title">
@@ -38,14 +38,19 @@ Transactions | Library Management
                                         </thead>
                                         <tbody>
                                             @foreach($transactions as $transaction)
-                                                <tr class="table-primary">
+                                                <tr class="{{ in_array($transaction->id, $overdueIds) ? 'table-danger' : 'table-primary' }}">
                                                     <th scope="row">{{$transaction->txn_no}}</th>
                                                     <td>{{$transaction->student_id}}</td>
                                                     <td>{{$transaction->book_id}}</td>
                                                     <td>{{$transaction->date_borrowed}}</td>
                                                     <td>{{$transaction->by}}</td>
                                                     <td>{{$transaction->date_added}}</td>
-                                                    <td>{{$transaction->due_date}}</td>
+                                                    <td>
+                                                        {{$transaction->due_date}}
+                                                        @if(in_array($transaction->id, $overdueIds))
+                                                            <span class="badge bg-danger ms-2">OVERDUE</span>
+                                                        @endif
+                                                    </td>
                                                     <td>
                                                         <a class="btn btn-sm btn-success btn-wave" href="">
                                                             <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
