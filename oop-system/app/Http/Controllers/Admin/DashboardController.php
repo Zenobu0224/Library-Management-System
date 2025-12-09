@@ -28,8 +28,12 @@ class DashboardController extends Controller
         // Overdue transactions count
         $overdueTransactions = Transaction::overdue()->count();
 
-        // Available books (total books - currently borrowed)
-        $availableBooks = $totalBooks - $totalTransactions;
+        // Available books (books with isActive = 1)
+        $availableBooks = Book::active()->count();
+        
+        // OR if you want books that are active AND not currently borrowed:
+        // $borrowedBookIds = Transaction::active()->pluck('book_id')->toArray();
+        // $availableBooks = Book::active()->whereNotIn('id', $borrowedBookIds)->count();
 
         // Calculate percentage increases (your existing logic)
         $bookPercentageIncrease = $this->calculatePercentageIncrease(Book::class);

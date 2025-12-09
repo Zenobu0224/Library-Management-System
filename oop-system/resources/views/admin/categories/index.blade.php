@@ -7,6 +7,19 @@
 @section('contents')
 <div class="col-xl-12 mt-2">
 <div class="card custom-card">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="card-header justify-content-between">
         <div class="card-title">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column-stacked-icon lucide-chart-column-stacked ml-2 side-menu__icon">
@@ -50,10 +63,12 @@
                                     <a href="{{ route('categories.edit', $category->id)}}" class="btn btn-icon btn-sm btn-success"><i class="ri-edit-line"></i></a>
 
 
-                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-icon btn-sm btn-danger"><i class="ri-delete-bin-line"></i></button>
+                                        <button type="submit" class="btn btn-icon btn-sm btn-danger">
+                                            <i class="ri-delete-bin-line"></i>
+                                        </button>
                                     </form>
                                 </div>
                             </td>

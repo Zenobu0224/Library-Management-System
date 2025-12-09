@@ -95,10 +95,16 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::findOrFail($id);
+        
+        // Check if category has any books
+        if ($category->books()->count() > 0) {
+            return redirect()->route('categories.index')
+                ->with('error', 'Cannot delete category! It has ' . $category->books()->count() . ' book(s) associated with it.');
+        }
+        
         $category->delete();
 
         return redirect()->route('categories.index')
-            ->with('Success', 'Category deleted successfully!');
-
+            ->with('success', 'Category deleted successfully!');
     }
 }

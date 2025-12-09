@@ -201,7 +201,7 @@
                             <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                         </svg>
                     </div>
-                    <h2 class="fw-bold mb-1 text-success">1,089</h2>
+                    <h2 class="fw-bold mb-1 text-success">{{ number_format($availableBooks) }}</h2>
                     <p class="text-muted mb-0">Ready to be Borrowed</p>
                 </div>
             </div>

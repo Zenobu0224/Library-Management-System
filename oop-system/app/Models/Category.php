@@ -11,4 +11,10 @@ class Category extends Model
         'isActive',
         'date_added'
     ];
+
+    // category relationship
+    public function books()
+    {
+        return $this->hasMany(Book::class);
+    }
 }
