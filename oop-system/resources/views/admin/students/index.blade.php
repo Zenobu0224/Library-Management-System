@@ -18,7 +18,7 @@
                                     Student
                                 </div>
                                 <div class="prism-toggle">
-                                    <a class="btn btn-sm btn-primary-light" href="{{route('students.create')}}">Add New Student</a>
+                                    <a class="btn btn-sm btn-primary-light" href="{{route('students.create')}}">Add Student</a>
                                 </div>
                             </div>
                             <div class="card-body">

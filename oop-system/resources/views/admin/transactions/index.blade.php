@@ -46,11 +46,11 @@ Transactions | Library Management
                                                     <th scope="row">{{$transaction->txn_no}}</th>
                                                     <td>{{$transaction->student_id}}</td>
                                                     <td>{{$transaction->book->name ?? 'N/A'}}</td>
-                                                    <td>{{$transaction->date_borrowed}}</td>
+                                                    <td>{{$transaction->date_borrowed->format('Y-m-d')}}</td>
                                                     <td>{{$transaction->by}}</td>
-                                                    <td>{{$transaction->date_added}}</td>
+                                                    <td>{{$transaction->date_added->format('Y-m-d')}}</td>
                                                     <td>
-                                                        {{$transaction->due_date}}
+                                                        {{$transaction->due_date->format('Y-m-d')}}
                                                         @if(in_array($transaction->id, $overdueIds))
                                                             <span class="badge bg-danger ms-2">OVERDUE</span>
                                                         @endif

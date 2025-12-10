@@ -23,11 +23,6 @@ Add Transaction | Library Management
         <div class="card-body">
             <form method="POST" action="{{ route('transactions.store') }}">
                 @csrf
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="txn_no">
-                    <label for="floatingInput">Transaction #</label>
-                </div>
-
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
                     <select class="form-control py-3" name="student_id" aria-placeholder="Category">
                         <option value="">Select Student</option>

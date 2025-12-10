@@ -48,7 +48,6 @@ class TransactionController extends Controller
      */
     public function store(Request $request) {
         $validated = $request->validate([
-            'txn_no' => 'required',
             'student_id' => 'required|exists:students,student_id',
             'book_id' => 'required|exists:books,id',
             'date_borrowed' => 'required|date',
@@ -56,7 +55,12 @@ class TransactionController extends Controller
             'by' => 'required',
         ]);
 
-        // Add date_added automatically
+        // Generate Transaction Number
+        $nextID = Transaction::max('id') + 1;
+        $customTxnNo = 'CSTXN' . date('Ymd') . $validated['student_id'] . $nextID;
+        
+        // Add auto-generated fields
+        $validated['txn_no'] = $customTxnNo;
         $validated['date_added'] = now();
 
         Transaction::create($validated);

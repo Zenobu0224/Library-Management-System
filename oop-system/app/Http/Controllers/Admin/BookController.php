@@ -12,9 +12,27 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
     {
-        $books = Book::all();
+        $query = Book::query();
+        
+        // Check if status filter is applied
+        if ($request->has('status') && !empty($request->status)) {
+            $statuses = $request->status;
+            
+            // If both active and inactive are selected, show all
+            if (count($statuses) == 2) {
+                // Show all books (no filter needed)
+            } else {
+                // Filter by selected status
+                $query->whereIn('isActive', $statuses);
+            }
+        }
+        
+        $books = $query->get();
 
         return view('admin.books.index', compact('books'));
     }
@@ -75,6 +93,8 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $book = Book::findOrFail($id);
+        
         $validated = $request->validate([
             'name' => 'required',
             'isbn' => 'required',
@@ -86,10 +106,10 @@ class BookController extends Controller
 
         $validated['isActive'] = (int) $validated['isActive'];
 
-        Book::create($validated);
+        $book->update($validated); // Changed from create to update
 
         return redirect()->route('books.index')
-            ->with('Success', 'Book added successfully');
+            ->with('Success', 'Book updated successfully'); // Changed message
     }
 
     /**

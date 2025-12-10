@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="col-12 mt-5 text-center">
-                    <button type="submit" class="btn btn-primary btn-sm px-4 py-2">Add Book</button>
+                    <button type="submit" class="btn btn-primary btn-sm px-4 py-2">Add Student</button>
                 </div>
             </form>
 

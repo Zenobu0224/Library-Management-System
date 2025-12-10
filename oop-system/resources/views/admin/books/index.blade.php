@@ -23,46 +23,91 @@
                                     <a class="btn btn-sm btn-primary-light" href="{{route('books.create')}}">Add Book</a>
                                 </div>
                             </div>
+                            
+                            <!-- Filter Section -->
+                            <div class="card-body border-bottom">
+                                <form method="GET" action="{{ route('books.index') }}" class="d-flex align-items-center gap-3">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <label class="fw-semibold me-2">Filter by Status:</label>
+                                        
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="status[]" value="1" id="activeCheck" 
+                                                {{ in_array('1', request('status', [])) ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="activeCheck">
+                                                Active
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="status[]" value="0" id="inactiveCheck"
+                                                {{ in_array('0', request('status', [])) ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="inactiveCheck">
+                                                Inactive
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        <i class="ri-filter-line me-1"></i>Apply Filter
+                                    </button>
+                                    
+                                    <a href="{{ route('books.index') }}" class="btn btn-sm btn-secondary">
+                                        <i class="ri-refresh-line me-1"></i>Reset
+                                    </a>
+                                </form>
+                            </div>
+
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table text-nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Book Title</th>
-                                                <th scope="col">ISBN</th>
-                                                <th scope="col">Author</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">Date Added</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($books as $book)
-                                                <tr class="table-primary">
-                                                    <th scope="row">{{$book->name}}</th>
-                                                    <td>{{$book->isbn}}</td>
-                                                    <td>{{$book->author}}</td>
-                                                    <td>{{$book->isActive ? 'Active' : 'Inactive'}}</td>
-                                                    <td>{{$book->date_added}}</td>
-                                                    <td>
-                                                        <a class="btn btn-sm btn-success btn-wave" href="{{route('books.edit', $book->id)}}">
-                                                            <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
-                                                        </a>
-
-                                                        <form action="{{route('books.destroy', $book->id)}}" method="POST" style="display:inline-block;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger btn-wave">
-                                                                <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
-                                                            </button>
-                                                        </form>
-                                                    </td>
+                                @if($books->isEmpty())
+                                    <div class="alert alert-info text-center">
+                                        <i class="ri-information-line me-2"></i>No books found with the selected filter.
+                                    </div>
+                                @else
+                                    <div class="table-responsive">
+                                        <table class="table text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Book Title</th>
+                                                    <th scope="col">ISBN</th>
+                                                    <th scope="col">Author</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Date Added</th>
+                                                    <th scope="col">Action</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($books as $book)
+                                                    <tr class="table-primary">
+                                                        <th scope="row">{{$book->name}}</th>
+                                                        <td>{{$book->isbn}}</td>
+                                                        <td>{{$book->author}}</td>
+                                                        <td>
+                                                            @if($book->isActive)
+                                                                <span class="badge bg-success">Active</span>
+                                                            @else
+                                                                <span class="badge bg-danger">Inactive</span>
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($book->date_added)->format('Y-m-d') }}</td>
+                                                        <td>
+                                                            <a class="btn btn-sm btn-success btn-wave" href="{{route('books.edit', $book->id)}}">
+                                                                <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
+                                                            </a>
 
-                                    </table>
-                                </div>
+                                                            <form action="{{route('books.destroy', $book->id)}}" method="POST" style="display:inline-block;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm btn-danger btn-wave">
+                                                                    <i class="ri-delete-bin-line align-middle me-2 d-inline-block"></i>Delete
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
                             </div>
                             <div class="card-footer d-none border-top-0">
                             </div>

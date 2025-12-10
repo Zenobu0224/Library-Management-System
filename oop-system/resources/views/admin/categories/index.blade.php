@@ -53,7 +53,7 @@
                                     <tr class="table-primary">
                                         <th scope="row">{{$category->name}}</th>
                                         <td>{{$category->isActive ? 'Active' : 'Inactive'}}</td>
-                                        <td>{{$category->date_added}}</td>
+                                        <td>{{ \Carbon\Carbon::parse($category->date_added)->format('Y-m-d') }}</td>
                                         <td>
                                             <a class="btn btn-sm btn-success btn-wave" href="{{route('categories.edit', $category->id)}}">
                                                 <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
