@@ -17,17 +17,13 @@ Edit Transactions | Library Management
                     <path d="M8 8v12"/>
                     <path d="M4 4v16"/>
                 </svg>
-                Edit Transactions {{$transaction->txn_no}}
+                Edit Transactions ({{$transaction->txn_no}})
             </div>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('transactions.update', $transaction->id) }}">
                 @csrf
                 @method('PUT')
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingPassword" placeholder="Password" name="txn_no" value="{{$transaction->txn_no}}">
-                    <label for="floatingInput">Transaction #</label>
-                </div>
 
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
                     <select class="form-control py-3" name="student_id">

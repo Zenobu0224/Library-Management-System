@@ -31,7 +31,12 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::all();
         $students = Student::all();
-        $books = Book::all();
+        
+        // Get IDs of books that are currently borrowed (not returned)
+        $borrowedBookIds = Transaction::whereNull('date_returned')->pluck('book_id')->toArray();
+        
+        // Get only books that are NOT currently borrowed
+        $books = Book::whereNotIn('id', $borrowedBookIds)->get();
 
         return view('admin.transactions.create', compact('transactions', 'students', 'books'));
     }
@@ -73,7 +78,16 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::findOrFail($id);
         $students = Student::all();
-        $books = Book::all();
+        
+        // Get IDs of books that are currently borrowed (not returned)
+        // Exclude the current transaction's book
+        $borrowedBookIds = Transaction::whereNull('date_returned')
+                                    ->where('id', '!=', $id)
+                                    ->pluck('book_id')
+                                    ->toArray();
+        
+        // Get available books (not borrowed) + the current transaction's book
+        $books = Book::whereNotIn('id', $borrowedBookIds)->get();
 
         return view('admin.transactions.edit', compact('transaction', 'students', 'books'));
     }
@@ -86,7 +100,6 @@ class TransactionController extends Controller
         $transaction = Transaction::findOrFail($id);
 
         $validated = $request->validate([
-            'txn_no' => 'required',
             'student_id' => 'required|exists:students,student_id',
             'book_id' => 'required|exists:books,id',
             'date_borrowed' => 'required|date',
@@ -108,6 +121,31 @@ class TransactionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+        $transaction->delete();
+
+        return redirect()->route('transactions.index')
+            ->with('success', 'Transaction removed successfully');
+    }
+
+    /**
+     * Mark a transaction as returned.
+     */
+    public function markAsReturned(string $id)
+    {
+        $transaction = Transaction::findOrFail($id);
+        
+        // Check if already returned
+        if ($transaction->date_returned) {
+            return redirect()->route('transactions.index')
+                ->with('info', 'This book has already been returned on ' . $transaction->date_returned->format('Y-m-d'));
+        }
+        
+        // Set the return date to today
+        $transaction->date_returned = now();
+        $transaction->save();
+        
+        return redirect()->route('transactions.index')
+            ->with('success', 'Book marked as returned successfully!');
     }
 }

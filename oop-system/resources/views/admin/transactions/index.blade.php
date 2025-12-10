@@ -11,14 +11,17 @@ Transactions | Library Management
                         <div class="card custom-card">
                             <div class="card-header justify-content-between">
                                 <div class="card-title">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user ml-2 side-menu__icon">
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="12" cy="7" r="4"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gpu-icon lucide-gpu mlr-2 side-menu__icon">
+                                        <path d="M2 21V3"/>
+                                        <path d="M2 5h18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2.26"/>
+                                        <path d="M7 17v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3"/>
+                                        <circle cx="16" cy="11" r="2"/>
+                                        <circle cx="8" cy="11" r="2"/>
                                     </svg>
                                     Transactions
                                 </div>
                                 <div class="prism-toggle">
-                                    <a class="btn btn-sm btn-primary-light" href="{{route('transactions.create')}}">Add New Transaction</a>
+                                    <a class="btn btn-sm btn-primary-light" href="{{route('transactions.create')}}">Add Transaction</a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -33,6 +36,7 @@ Transactions | Library Management
                                                 <th scope="col">By</th>
                                                 <th scope="col">Date Added</th>
                                                 <th scope="col">Due Date</th>
+                                                <th scope="col">Date Returned</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -52,11 +56,28 @@ Transactions | Library Management
                                                         @endif
                                                     </td>
                                                     <td>
+                                                        @if($transaction->date_returned)
+                                                            {{ $transaction->date_returned->format('Y-m-d') }}
+                                                        @else
+                                                            <span class="badge bg-warning text-dark">Not yet returned</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if(!$transaction->date_returned)
+                                                            <form action="{{route('transactions.return', $transaction->id)}}" method="POST" style="display:inline-block;">
+                                                                @csrf
+                                                                @method('PATCH')
+                                                                <button type="submit" class="btn btn-sm btn-info btn-wave">
+                                                                    <i class="ri-check-line align-middle me-2 d-inline-block"></i>Return
+                                                                </button>
+                                                            </form>
+                                                        @endif
+
                                                         <a class="btn btn-sm btn-success btn-wave" href="{{route('transactions.edit', $transaction->id)}}">
                                                             <i class="ri-pencil-line align-middle me-2 d-inline-block"></i>Edit
                                                         </a>
 
-                                                        <form action="" method="POST" style="display:inline-block;">
+                                                        <form action="{{route('transactions.destroy', $transaction->id)}}" method="POST" style="display:inline-block;">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-sm btn-danger btn-wave">

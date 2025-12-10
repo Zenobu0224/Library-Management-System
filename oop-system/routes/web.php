@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('students', StudentController::class);
     Route::resource('transactions', TransactionController::class);
     Route::resource('users', UserController::class);
+
+    Route::patch('/transactions/{id}/return', [TransactionController::class, 'markAsReturned'])->name('transactions.return');
 });
 
 require __DIR__.'/auth.php';
