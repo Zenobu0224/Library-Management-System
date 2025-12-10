@@ -31,7 +31,7 @@ Transactions | Library Management
                                             <tr>
                                                 <th scope="col">Transaction #</th>
                                                 <th scope="col">StudentID</th>
-                                                <th scope="col">Book ID</th>
+                                                <th scope="col">Book</th>
                                                 <th scope="col">Date Borrowed</th>
                                                 <th scope="col">By</th>
                                                 <th scope="col">Date Added</th>
@@ -45,7 +45,7 @@ Transactions | Library Management
                                                 <tr class="{{ in_array($transaction->id, $overdueIds) ? 'table-danger' : 'table-primary' }}">
                                                     <th scope="row">{{$transaction->txn_no}}</th>
                                                     <td>{{$transaction->student_id}}</td>
-                                                    <td>{{$transaction->book_id}}</td>
+                                                    <td>{{$transaction->book->name ?? 'N/A'}}</td>
                                                     <td>{{$transaction->date_borrowed}}</td>
                                                     <td>{{$transaction->by}}</td>
                                                     <td>{{$transaction->date_added}}</td>

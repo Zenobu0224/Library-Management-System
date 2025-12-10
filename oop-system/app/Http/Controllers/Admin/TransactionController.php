@@ -17,10 +17,12 @@ class TransactionController extends Controller
      */
     public function index()
     {
-
-        $transactions = Transaction::all();
+        // Eager load relationships to avoid N+1 query problem
+        $transactions = Transaction::with(['book', 'student'])->get();
+        
         // Get IDs of overdue transactions
         $overdueIds = Transaction::overdue()->pluck('id')->toArray();
+        
         return view('admin.transactions.index', compact('transactions', 'overdueIds'));
     }
 
